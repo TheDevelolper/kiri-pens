@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Kiri Pens - Handcrafted Fountain Pens">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Art of Writing</h1>
+      <p class="hero-text">Handcrafted fountain pens made with passion and precision. Each pen is a unique work of art, designed to transform your writing experience.</p>
+      <div class="hero-buttons">
+        <a href="/pens" class="btn btn-primary">Explore Our Pens</a>
+        <a href="/contact" class="btn btn-secondary">Custom Orders</a>
+      </div>
+    </div>
+    <div class="hero-decoration">
+      <span class="ornament">❧</span>
+    </div>
+  </section>
+
+  <section class="collections">
+    <h2>Our Collections</h2>
+    <p class="section-intro">Discover our range of handcrafted pens, each with its own character.</p>
+    <div class="collection-grid">
+      <a href="/pens?collection=everyday" class="collection-card">
+        <div class="collection-icon">✒</div>
+        <h3>Everyday Writers</h3>
+        <p>Perfect companions for your daily writing journey</p>
+      </a>
+      <a href="/pens?collection=limited" class="collection-card">
+        <div class="collection-icon">★</div>
+        <h3>Limited Editions</h3>
+        <p>Rare pieces crafted in small batches</p>
+      </a>
+      <a href="/pens?collection=luxury" class="collection-card">
+        <div class="collection-icon">♦</div>
+        <h3>Luxury Series</h3>
+        <p>Premium materials and exceptional craftsmanship</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <span class="feature-icon">◈</span>
+      <h3>Handmade Excellence</h3>
+      <p>Each pen is individually handcrafted by skilled artisans.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">◈</span>
+      <h3>Premium Materials</h3>
+      <p>We source the finest resins, ebonite, and precious metals.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">◈</span>
+      <h3>Lifetime Warranty</h3>
+      <p>Every pen comes with our commitment to quality.</p>
+    </div>
+  </section>
+
+  <section class="blog-preview">
+    <h2>Pen Care & Stories</h2>
+    <p class="section-intro">Tips, tutorials, and stories from the world of fountain pens.</p>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <h4>Caring for Your Fountain Pen</h4>
+        <p>Learn the essential maintenance tips to keep your pen writing smoothly for years.</p>
+        <a href="#">Read more →</a>
+      </article>
+      <article class="blog-card">
+        <h4>The Art of Nib Tuning</h4>
+        <p>Discover how nib customization can transform your writing experience.</p>
+        <a href="#">Read more →</a>
+      </article>
+      <article class="blog-card">
+        <h4>Ink Journaling</h4>
+        <p>Explore the meditative practice of ink selection and journaling.</p>
+        <a href="#">Read more →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Begin Your Journey</h2>
+      <p>Whether you're new to fountain pens or a seasoned collector, we'd love to help you find your perfect pen.</p>
+      <a href="/contact" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    margin-bottom: 4rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+    letter-spacing: 0.02em;
+  }
+
+  .hero-text {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--color-text);
+    opacity: 0.85;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--color-accent);
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-light);
+    border-color: var(--color-accent-light);
+    color: var(--color-text);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-accent);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .hero-decoration {
+    margin-top: 2rem;
+  }
+
+  .ornament {
+    font-size: 2rem;
+    color: var(--color-accent);
+    opacity: 0.6;
+  }
+
+  .collections, .blog-preview {
+    margin-bottom: 4rem;
+  }
+
+  .collections h2, .blog-preview h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .collection-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .collection-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  .collection-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+  }
+
+  .collection-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .collection-card p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 3rem 2rem;
+    background: white;
+    border: 1px solid var(--color-border);
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .feature h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .blog-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .blog-card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .blog-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-card p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+
+  .blog-card a {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+  }
+
+  .cta {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--color-text);
+    color: var(--color-bg);
+    margin: 0 -2rem -3rem;
+  }
+
+  .cta h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--color-bg);
+  }
+
+  .cta p {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+  }
+
+  .cta .btn-primary {
+    background: var(--color-accent-light);
+    border-color: var(--color-accent-light);
+    color: var(--color-text);
+  }
+
+  .cta .btn-primary:hover {
+    background: var(--color-bg);
+  }
+</style>

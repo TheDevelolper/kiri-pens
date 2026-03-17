@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const accessories = [
+  {
+    id: 1,
+    name: "Premium Ink Bottle",
+    category: "Ink",
+    price: 28,
+    description: "50ml glass bottle with archival-quality ink."
+  },
+  {
+    id: 2,
+    name: "Pen Case (6 pens)",
+    category: "Cases",
+    price: 75,
+    description: "Leather pen case with individual compartments."
+  },
+  {
+    id: 3,
+    name: "Nib Cleaner",
+    category: "Maintenance",
+    price: 12,
+    description: "Gentle solution for pen maintenance."
+  },
+  {
+    id: 4,
+    name: "Converter",
+    category: "Accessories",
+    price: 15,
+    description: "Standard piston converter for cartridge pens."
+  },
+  {
+    id: 5,
+    name: "Writing Journal",
+    category: "Paper",
+    case: 35,
+    description: "192 pages of fountain pen friendly paper."
+  },
+  {
+    id: 6,
+    name: "Pen Stand",
+    category: "Display",
+    price: 45,
+    description: "Wooden display stand for up to 4 pens."
+  }
+];
+
+const categories = [...new Set(accessories.map(a => a.category))];
+---
+
+<BaseLayout title="Accessories - Kiri Pens">
+  <section class="page-header">
+    <h1>Accessories</h1>
+    <p class="section-intro">Everything you need to enhance your writing experience.</p>
+  </section>
+
+  <section class="categories">
+    <span class="category-label">Browse by:</span>
+    {categories.map(category => (
+      <a href={`#${category.toLowerCase()}`} class="category-tag">{category}</a>
+    ))}
+  </section>
+
+  <section class="product-grid">
+    {accessories.map(item => (
+      <article class="product-card">
+        <div class="product-image">
+          <div class="placeholder-icon">◇</div>
+        </div>
+        <div class="product-info">
+          <span class="category-tag">{item.category}</span>
+          <h3>{item.name}</h3>
+          <p class="description">{item.description}</p>
+          <div class="price-row">
+            <span class="price">${item.price}</span>
+            <a href={`/contact?accessory=${item.id}`} class="inquire-btn">Inquire</a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-intro {
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .category-label {
+    font-family: var(--font-heading);
+    opacity: 0.7;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    background: white;
+    border: 1px solid var(--color-border);
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+  }
+
+  .category-tag:hover {
+    border-color: var(--color-accent);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .product-image {
+    height: 160px;
+    background: linear-gradient(135deg, #f5f0e8 0%, #e8e0d4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-icon {
+    font-size: 3rem;
+    color: var(--color-accent);
+    opacity: 0.4;
+  }
+
+  .product-info {
+    padding: 1.5rem;
+  }
+
+  .product-info .category-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .price {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .inquire-btn {
+    padding: 0.4rem 1rem;
+    background: var(--color-text);
+    color: var(--color-bg);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+
+  .inquire-btn:hover {
+    background: var(--color-accent);
+  }
+</style>

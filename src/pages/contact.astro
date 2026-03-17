@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact - Kiri Pens">
+  <section class="page-header">
+    <h1>Get in Touch</h1>
+    <p class="section-intro">We'd love to hear from you. Whether you have a question about a pen, want to place a custom order, or just want to say hello.</p>
+  </section>
+
+  <section class="contact-container">
+    <div class="contact-info">
+      <h2>Visit Our Workshop</h2>
+      <p class="intro">Our pens are handcrafted in our small workshop. Visits are by appointment only.</p>
+      
+      <div class="info-item">
+        <h3>Address</h3>
+        <p>123 Artisan Lane<br/>Craftsman District<br/>Portland, OR 97204</p>
+      </div>
+
+      <div class="info-item">
+        <h3>Hours</h3>
+        <p>Monday - Friday: 9am - 5pm<br/>Saturday: By appointment<br/>Sunday: Closed</p>
+      </div>
+
+      <div class="info-item">
+        <h3>Contact</h3>
+        <p>hello@kiripens.com<br/>(503) 555-0123</p>
+      </div>
+
+      <div class="info-item">
+        <h3>Response Time</h3>
+        <p>We typically respond within 24-48 business hours.</p>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h2>Send a Message</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="general">General Inquiry</option>
+            <option value="custom-order">Custom Order</option>
+            <option value="pen-inquiry">Pen Information</option>
+            <option value="repair">Repair/Service</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Do you ship internationally?</h3>
+        <p>Yes, we ship worldwide. Shipping times vary by location, typically 7-14 business days.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is your warranty?</h3>
+        <p>All pens come with a lifetime warranty covering manufacturing defects. Nib adjustments are complimentary for the life of the pen.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you offer nib customization?</h3>
+        <p>Yes! We offer nib tuning including flex, smoothness adjustments, and specialty grinds. Contact us for options.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I care for my pen?</h3>
+        <p>We include care instructions with every pen. Regular cleaning with lukewarm water and occasional pen flush recommended.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-intro {
+    font-style: italic;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .contact-info {
+    padding: 2rem;
+    background: white;
+    border: 1px solid var(--color-border);
+  }
+
+  .contact-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-info .intro {
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+
+  .info-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .info-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: var(--color-accent);
+  }
+
+  .info-item p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    padding: 2rem;
+    background: white;
+    border: 1px solid var(--color-border);
+  }
+
+  .contact-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    transition: border-color 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    background: var(--color-accent-light);
+    color: var(--color-text);
+  }
+
+  .faq {
+    padding: 3rem;
+    background: white;
+    border: 1px solid var(--color-border);
+  }
+
+  .faq h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-accent);
+  }
+
+  .faq-item p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+</style>

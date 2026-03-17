@@ -1,0 +1,187 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Eleanor M.",
+    location: "Portland, OR",
+    text: "The Artisan has become my daily companion. The nib writes so smoothly, it's transformed my journaling practice. Truly a piece of art.",
+    rating: 5
+  },
+  {
+    id: 2,
+    name: "James T.",
+    location: "London, UK",
+    text: "I purchased the Monarch as a milestone gift to myself. The craftsmanship is extraordinary - it feels like holding a piece of history.",
+    rating: 5
+  },
+  {
+    id: 3,
+    name: "Sarah L.",
+    location: "Tokyo, Japan",
+    text: "The Sakura Blossom is more beautiful in person than any photo could capture. Kiri Pens truly understands the art of pen-making.",
+    rating: 5
+  },
+  {
+    id: 4,
+    name: "Michael R.",
+    location: "Austin, TX",
+    text: "As someone new to fountain pens, the team was incredibly helpful in guiding me to the right pen. My Scholar is perfect for long note-taking sessions.",
+    rating: 5
+  },
+  {
+    id: 5,
+    name: "Amelia K.",
+    location: "Vienna, Austria",
+    text: "The Golden Hour is my prized possession. The urushi lacquer work is museum-quality. I've already ordered my next piece.",
+    rating: 5
+  },
+  {
+    id: 6,
+    name: "David C.",
+    location: "San Francisco, CA",
+    text: "Excellent customer service and the pens are built to last. My everyday writer still writes beautifully after three years of daily use.",
+    rating: 5
+  }
+];
+---
+
+<BaseLayout title="Testimonials - Kiri Pens">
+  <section class="page-header">
+    <h1>Testimonials</h1>
+    <p class="section-intro">What our customers have to say about their writing journey with us.</p>
+  </section>
+
+  <section class="testimonial-grid">
+    {testimonials.map(testimonial => (
+      <article class="testimonial-card">
+        <div class="stars">
+          {[...Array(testimonial.rating)].map(() => (
+            <span class="star">★</span>
+          ))}
+        </div>
+        <blockquote>"{testimonial.text}"</blockquote>
+        <div class="author">
+          <span class="name">{testimonial.name}</span>
+          <span class="location">{testimonial.location}</span>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <section class="share-experience">
+    <h2>Share Your Experience</h2>
+    <p>We love hearing from our community. Tag us on social media or send us your story.</p>
+    <a href="/contact" class="btn">Get in Touch</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-intro {
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .testimonial-card::before {
+    content: '❧';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--color-accent);
+    opacity: 0.15;
+  }
+
+  .stars {
+    margin-bottom: 1rem;
+  }
+
+  .star {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+  }
+
+  blockquote {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+  }
+
+  .author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .author .name {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .author .location {
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  .share-experience {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border: 1px solid var(--color-border);
+  }
+
+  .share-experience h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .share-experience p {
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: var(--color-accent-light);
+    color: var(--color-text);
+  }
+</style>
