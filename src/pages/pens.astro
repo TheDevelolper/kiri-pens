@@ -4,91 +4,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const pens = [
   {
     id: 1,
-    name: "The Artisan",
-    collection: "everyday",
-    price: 185,
+    name: "Earl Blue",
+    price: 225,
     nib: "Medium",
-    material: "Ebonite",
-    color: "Black & Gold",
-    description: "A classic everyday writer with a smooth, reliable nib."
-  },
-  {
-    id: 2,
-    name: "Sakura Blossom",
-    collection: "limited",
-    price: 320,
-    nib: "Fine",
     material: "Resin",
-    color: "Pink Marbled",
-    description: "Limited edition celebrating the fleeting beauty of spring."
-  },
-  {
-    id: 3,
-    name: "Monarch",
-    collection: "luxury",
-    price: 550,
-    nib: "Broad",
-    material: "Celluloid",
-    color: "Amber & Brown",
-    description: "Premium celluloid construction with 18K gold nib."
-  },
-  {
-    id: 4,
-    name: "The Scholar",
-    collection: "everyday",
-    price: 145,
-    nib: "Fine",
-    material: "Resin",
-    color: "Burgundy",
-    description: "Perfect for students and daily journaling."
-  },
-  {
-    id: 5,
-    name: "Winter's Rest",
-    collection: "limited",
-    price: 380,
-    nib: "Medium",
-    material: "Ebonite",
-    color: "Frosted Blue",
-    description: "Only 50 pieces made each winter season."
-  },
-  {
-    id: 6,
-    name: "Emperor",
-    collection: "luxury",
-    price: 890,
-    nib: "Extra Broad",
-    material: "Precious Resin",
-    color: "Royal Blue",
-    description: "Our flagship model with rhodium accents."
-  },
-  {
-    id: 7,
-    name: "The Correspondent",
-    collection: "everyday",
-    price: 165,
-    nib: "Medium",
-    material: "Ebonite",
-    color: "Sea Green",
-    description: "Ideal pen for long writing sessions."
-  },
-  {
-    id: 8,
-    name: "Golden Hour",
-    collection: "limited",
-    price: 425,
-    nib: "Fine",
-    material: "Urushi Lacquer",
-    color: "Gold Flake",
-    description: "Hand-lacquered with genuine gold dust."
+    color: "Blue",
+    description: "A smooth, reliable writer with a hand-polished resin body and custom-tuned nib. Resin construction offers excellent durability and resistance to wear. Features a luxury finish with an ergonomic design for extended writing comfort."
   }
 ];
 
-const collections = [
-  { id: "everyday", name: "Everyday Writers", description: "Reliable pens for daily use" },
-  { id: "limited", name: "Limited Editions", description: "Rare, collectible pieces" },
-  { id: "luxury", name: "Luxury Series", description: "Premium materials and craftsmanship" }
-];
 ---
 
 <BaseLayout title="Our Pens - Kiri Pens">
@@ -97,21 +21,13 @@ const collections = [
     <p class="section-intro">Each pen is handcrafted with meticulous attention to detail.</p>
   </section>
 
-  <section class="filters">
-    <a href="/pens" class="filter-btn active">All</a>
-    {collections.map(collection => (
-      <a href={`/pens?collection=${collection.id}`} class="filter-btn">{collection.name}</a>
-    ))}
-  </section>
-
   <section class="product-grid">
     {pens.map(pen => (
       <article class="product-card">
         <div class="product-image">
-          <div class="pen-placeholder">✒</div>
+          <img src="/pens/earl-blue.png" alt={pen.name} />
         </div>
         <div class="product-info">
-          <span class="collection-tag">{pen.collection}</span>
           <h3>{pen.name}</h3>
           <p class="description">{pen.description}</p>
           <div class="specs">
@@ -119,8 +35,8 @@ const collections = [
             <span>•</span>
             <span>{pen.material}</span>
           </div>
-          <div class="price-row">
-            <span class="price">${pen.price}</span>
+            <div class="price-row">
+            <span class="price">£{pen.price}</span>
             <a href={`/contact?pen=${pen.id}`} class="inquire-btn">Inquire</a>
           </div>
         </div>
@@ -194,12 +110,13 @@ const collections = [
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
   }
 
-  .pen-placeholder {
-    font-size: 4rem;
-    color: var(--color-accent);
-    opacity: 0.5;
+  .product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
 
   .product-info {
