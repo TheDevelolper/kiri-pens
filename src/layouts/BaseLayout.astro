@@ -37,6 +37,7 @@ const base = import.meta.env.BASE_URL
           </button>
         </div>
         <ul class="nav-links">
+          <li><button class="close-menu" aria-label="Close menu">&times;</button></li>
           <li><a href={`${base}pens`}>Pens</a></li>
           <li><a href={`${base}accessories`}>Accessories</a></li>
           <li><a href={`${base}blog`}>Blog</a></li>
@@ -265,10 +266,29 @@ const base = import.meta.env.BASE_URL
     .nav-links a {
       font-size: 1.2rem;
     }
+
+    .close-menu {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--color-text);
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .close-menu:hover {
+      color: var(--color-accent);
+    }
   }
 
   @media (min-width: 769px) {
-    .hamburger {
+    .hamburger,
+    .close-menu {
       display: none;
     }
   }
@@ -277,6 +297,13 @@ const base = import.meta.env.BASE_URL
 <script>
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
+  const closeMenu = document.querySelector('.close-menu');
+
+  const closeNav = () => {
+    hamburger?.classList.remove('active');
+    navLinks?.classList.remove('active');
+    hamburger?.setAttribute('aria-expanded', 'false');
+  };
 
   hamburger?.addEventListener('click', () => {
     hamburger.classList.toggle('active');
@@ -285,11 +312,9 @@ const base = import.meta.env.BASE_URL
     hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
   });
 
+  closeMenu?.addEventListener('click', closeNav);
+
   document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger?.classList.remove('active');
-      navLinks?.classList.remove('active');
-      hamburger?.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeNav);
   });
 </script>
