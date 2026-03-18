@@ -74,7 +74,7 @@ const categories = [...new Set(accessories.map(a => a.category))];
           <p class="description">{item.description}</p>
           <div class="price-row">
             <span class="price">${item.price}</span>
-            <a href={`/contact?accessory=${item.id}`} class="inquire-btn">Inquire</a>
+            <a href={`/contact?accessory=${item.id}`} class="enquire-btn">Inquire</a>
           </div>
         </div>
       </article>
@@ -196,7 +196,7 @@ const categories = [...new Set(accessories.map(a => a.category))];
     color: var(--color-accent);
   }
 
-  .inquire-btn {
+  .enquire-btn {
     padding: 0.4rem 1rem;
     background: var(--color-text);
     color: var(--color-bg);
@@ -205,7 +205,7 @@ const categories = [...new Set(accessories.map(a => a.category))];
     transition: all 0.2s ease;
   }
 
-  .inquire-btn:hover {
+  .enquire-btn:hover {
     background: var(--color-accent);
   }
 </style>

@@ -21,13 +21,53 @@ const allPens = Object.values(import.meta.glob('./pens/*.md', { eager: true }));
           <p class="description">{pen.frontmatter.description}</p>
           <div class="price-row">
             <span class="price">£{pen.frontmatter.price}</span>
-            <a href="/contact" class="inquire-btn">Inquire</a>
+            <button class="more-btn" 
+              data-name={pen.frontmatter.name}
+              data-image={pen.frontmatter.image}
+              data-price={pen.frontmatter.price}
+              data-description={pen.frontmatter.description}>More</button>
           </div>
         </div>
       </article>
     ))}
   </section>
+
+  <dialog id="product-modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-image"><img src="" alt="" /></div>
+      <h2 class="modal-title"></h2>
+      <p class="modal-price"></p>
+      <p class="modal-description"></p>
+      <a href="/contact" class="modal-enquire-btn">Inquire</a>
+    </div>
+  </dialog>
 </BaseLayout>
+
+<script>
+  const modal = document.getElementById('product-modal');
+  const modalImg = modal.querySelector('.modal-image img');
+  const modalTitle = modal.querySelector('.modal-title');
+  const modalPrice = modal.querySelector('.modal-price');
+  const modalDesc = modal.querySelector('.modal-description');
+  const closeBtn = modal.querySelector('.modal-close');
+
+  document.querySelectorAll('.more-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      modalImg.src = btn.dataset.image;
+      modalImg.alt = btn.dataset.name;
+      modalTitle.textContent = btn.dataset.name;
+      modalPrice.textContent = `£${btn.dataset.price}`;
+      modalDesc.textContent = btn.dataset.description;
+      modal.showModal();
+    });
+  });
+
+  closeBtn.addEventListener('click', () => modal.close());
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.close();
+  });
+</script>
 
 <style>
   .page-header {
@@ -74,7 +114,7 @@ const allPens = Object.values(import.meta.glob('./pens/*.md', { eager: true }));
     grid-template-columns: 1fr;
     gap: 2rem;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto 2rem auto;
     justify-content: center;
   }
 
@@ -184,16 +224,131 @@ const allPens = Object.values(import.meta.glob('./pens/*.md', { eager: true }));
     color: var(--color-accent);
   }
 
-  .inquire-btn {
+  .more-btn {
     padding: 0.5rem 1.25rem;
     background: var(--color-text);
     color: var(--color-bg);
     font-family: var(--font-heading);
     font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
     transition: all 0.2s ease;
   }
 
-  .inquire-btn:hover {
+  .more-btn:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .modal {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 450px;
+    width: 90%;
+    margin: auto;
+    border: none;
+    background: var(--color-bg);
+  }
+
+  .modal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal[open] {
+    animation: zoomIn 0.2s ease-out;
+  }
+
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .modal-content {
+    position: relative;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text);
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+  }
+
+  .modal-close:hover {
+    color: var(--color-accent);
+  }
+
+  .modal-image {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .modal-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .modal-price {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .modal-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-enquire-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--color-text);
+    color: var(--color-bg);
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .modal-enquire-btn:hover {
     background: var(--color-accent);
     color: var(--color-bg);
   }
