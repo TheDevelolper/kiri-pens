@@ -1,17 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pens = [
-  {
-    id: 1,
-    name: "Earl Blue",
-    price: 225,
-    material: "Resin",
-    color: "Blue",
-    description: "A smooth, reliable writer with a hand-polished resin body and custom-tuned nib. Resin construction offers excellent durability and resistance to wear. Features a luxury finish with an ergonomic design for extended writing comfort."
-  }
-];
-
+const allPens = Object.values(import.meta.glob('./pens/*.md', { eager: true }));
 ---
 
 <BaseLayout title="Our Pens - Kiri Pens">
@@ -21,20 +11,17 @@ const pens = [
   </section>
 
   <section class="product-grid">
-    {pens.map(pen => (
+    {allPens.map(pen => (
       <article class="product-card">
         <div class="product-image">
-          <img src="/pens/earl-blue.png" alt={pen.name} />
+          <img src={pen.frontmatter.image} alt={pen.frontmatter.name} />
         </div>
         <div class="product-info">
-          <h3>{pen.name}</h3>
-          <p class="description">{pen.description}</p>
-          <div class="specs">
-            <span>{pen.material}</span>
-          </div>
-            <div class="price-row">
-            <span class="price">£{pen.price}</span>
-            <a href={`/contact?pen=${pen.id}`} class="inquire-btn">Inquire</a>
+          <h3>{pen.frontmatter.name}</h3>
+          <p class="description">{pen.frontmatter.description}</p>
+          <div class="price-row">
+            <span class="price">£{pen.frontmatter.price}</span>
+            <a href="/contact" class="inquire-btn">Inquire</a>
           </div>
         </div>
       </article>
@@ -84,8 +71,29 @@ const pens = [
 
   .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  @media (min-width: 640px) {
+    .product-grid {
+      grid-template-columns: repeat(2, minmax(280px, 350px));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product-grid {
+      grid-template-columns: repeat(3, minmax(280px, 350px));
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .product-grid {
+      grid-template-columns: repeat(4, minmax(280px, 350px));
+    }
   }
 
   .product-card {
@@ -102,12 +110,10 @@ const pens = [
   }
 
   .product-image {
-    height: 180px;
+    height: 15rem;
     display: flex;
     align-items: center;
     justify-content: center;
-
-
     padding-top: 1rem;
     border-top: 1px solid var(--color-border);
   }
@@ -120,6 +126,10 @@ const pens = [
 
   .product-info {
     padding: 1.5rem;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 
   .collection-tag {
@@ -141,8 +151,14 @@ const pens = [
   .description {
     font-size: 0.95rem;
     opacity: 0.8;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     line-height: 1.5;
+    height: 6rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4 ;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
   }
 
   .specs {
