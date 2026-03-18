@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
+---
+
+<BaseLayout title="Blog - Kiri Pens">
+  <section class="blog-header">
+    <h1>From the Workshop</h1>
+    <p class="section-intro">Thoughts on pen making, craftsmanship, and the art of writing.</p>
+  </section>
+
+  <section class="blog-list">
+    {sortedPosts.map(post => (
+      <article class="blog-card">
+        <a href={post.url} class="blog-card-link">
+          <h2>{post.frontmatter.title}</h2>
+          <p class="post-excerpt">{post.frontmatter.description}</p>
+          <p class="post-meta">
+            <time datetime={post.frontmatter.date}>{new Date(post.frontmatter.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+          </p>
+        </a>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-header {
+    text-align: center;
+    padding: 4rem 2rem 3rem;
+  }
+
+  .blog-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-intro {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+  }
+
+  .blog-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .blog-card {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .blog-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .blog-card-link {
+    display: block;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .blog-card h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .post-excerpt {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .post-meta {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+  }
+</style>
