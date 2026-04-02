@@ -19,7 +19,7 @@ const sortedPosts = publishedPosts.sort((a, b) => new Date(b.frontmatter.date) -
           <h2>{post.frontmatter.title}</h2>
           <p class="post-excerpt">{post.frontmatter.description}</p>
           <p class="post-meta">
-            <time datetime={post.frontmatter.date}>{new Date(post.frontmatter.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            <time datetime={post.frontmatter.date ?? post.frontmatter.modified}>{new Date(post.frontmatter.date ?? post.frontmatter.modified).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
           </p>
         </a>
       </article>

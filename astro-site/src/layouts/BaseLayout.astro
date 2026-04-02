@@ -175,6 +175,22 @@ const base = import.meta.env.BASE_URL
     margin: 0 auto;
   }
 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+
+  th, td {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+  }
+
+  th {
+    background: rgba(0, 75, 56, 0.05);
+    font-weight: 600;
+  }
+
   .tagline {
     font-family: var(--font-heading);
     font-style: italic;
