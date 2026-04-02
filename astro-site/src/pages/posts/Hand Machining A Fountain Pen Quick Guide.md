@@ -45,7 +45,7 @@ We're now ready to work on the separate parts of the pen.
 
 ## Step 2 - The Section
 
-> TODO: A better approach would be to keep the cap and the section as one piece initially, you could then make the section slightly larger. Then you'd be able to turn it down slightly. 
+> **TODO:** A better approach would be to keep the cap and the section as one piece initially, you could then make the section slightly larger. Then you'd be able to turn it down slightly. 
 
 -  Put Section Piece into chuck ensure it's secure and square
 
