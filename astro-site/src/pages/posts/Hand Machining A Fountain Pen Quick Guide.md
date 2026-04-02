@@ -1,12 +1,10 @@
 ---
 title: Hand Machining A Fountain Pen Quick Guide
-created: 2026-03-30T13:00:54.907Z
-modified: 2026-03-30T13:10:53.596Z
+created: 2026-03-30
+modified: 2026-04-02
 layout: ../../layouts/BlogPostLayout.astro
 published: true
 ---
-# Hand Machining A Fountain Pen Quick Guide
-
 ## Build Process
 
 ### Step 1 - Creating A Blank
