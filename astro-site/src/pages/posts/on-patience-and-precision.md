@@ -3,6 +3,7 @@ layout: ../../layouts/BlogPostLayout.astro
 title: "On Patience and Precision"
 date: 2026-03-17
 description: "Why handcrafting fountain pens takes time, and why that's the point."
+published: false
 ---
 
 There's a moment in every pen-making session where everything slows down. The lathe is spinning, the brass rod is being turned down to fractions of a millimetre, and there's nothing else on my mind except the task at hand.

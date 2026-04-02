@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const allPens = Object.values(import.meta.glob('./pens/*.md', { eager: true }));
+const allPens = Object.values(import.meta.glob('./pens/*.{md,mdx}', { eager: true }));
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
