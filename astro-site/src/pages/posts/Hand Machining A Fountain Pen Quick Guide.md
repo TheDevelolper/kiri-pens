@@ -3,7 +3,7 @@ title: Hand Machining A Fountain Pen Quick Guide
 created: 2026-03-30
 modified: 2026-04-02
 layout: ../../layouts/BlogPostLayout.astro
-published: true
+published: false
 ---
 ## Build Process
 
@@ -47,12 +47,11 @@ We're now ready to work on the separate parts of the pen.
 
 > **TODO:** A better approach would be to keep the cap and the section as one piece initially, you could then make the section slightly larger. Then you'd be able to turn it down slightly. 
 
--  Put Section Piece into chuck ensure it's secure and square
-
--  Use the small starter drill bit to create a small centre point to work from
-
--  Use a barrel trimmer to square off both ends of the section and reduce the length to `31 mm`
-
+- Put Section Piece into chuck ensure it's secure and square
+- Using an 18mm (or whatever is appropriate for your rod material) collet chuck, hold the blank for the nib section.
+* Use a barrel trimmer to square off both ends of the section and reduce the length to `31 mm`
+- Use the small starter drill bit to create a small centre point to work from
+- Keep the starter bit inside the blank for the next part (gives the tenon more stength)
 -  Use rectangular parting tool to create a tenon for the M10 thread, `8 mm length` X `⌀9.7 mm`, perfect size for the `M10X1.0 die` try to get this as smooth as possible (though don't worry if you can't it's a nice to have).
 
 -  Use the rectangular parting tool to bring the section body down to `⌀16mm` leaving `4 mm` to take off later
